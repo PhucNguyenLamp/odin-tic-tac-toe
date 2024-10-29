@@ -6,7 +6,8 @@ const GameBoard = (() => {
         board.fill(null);
     }
     const setMove = (index, symbol) => {
-        if (!board[index]) board[index] = symbol;
+        if (!board[index]) {board[index] = symbol; return true;}
+        return false;
     }
     const getBoard = () => board;
     const display = () => {
@@ -40,7 +41,7 @@ const GameController = (() => {
     }
     const playRound = (index) => {
         if (isGameOver) return;
-        GameBoard.setMove(index, currentPlayer.symbol);
+        const check = GameBoard.setMove(index, currentPlayer.symbol);
         GameBoard.display();
         if (checkWin()) {
             console.log(`${currentPlayer.name} wins!`);
@@ -52,7 +53,7 @@ const GameController = (() => {
             isGameOver = true;
             return;
         }
-        switchTurn();
+        if (check) switchTurn();
     };
     const resetGame = () => {
         GameBoard.reset();
@@ -82,6 +83,12 @@ const changeTurn = () => {
     const name = GameController.getCurrentPlayer().name;
     if (GameController.checkWin()) {
         turn.textContent = `${name} Wins❗`;
+        con.addEventListener("mousemove", doIt);
+        con.addEventListener("click", doItHard);
+        return;
+    }
+    if (GameBoard.getBoard().every(cell => cell)){
+        turn.textContent = `Draw❗`;
         con.addEventListener("mousemove", doIt);
         con.addEventListener("click", doItHard);
         return;
