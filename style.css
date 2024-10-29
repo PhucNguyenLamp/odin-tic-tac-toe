@@ -1,0 +1,54 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 10vh);
+    grid-template-rows: repeat(3, 10vh);
+    grid-gap: 5px;
+}
+
+.grid-item {
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+    cursor: pointer;
+}
+.grid-item:hover {
+    background-color: rgb(235, 235, 211);
+}
+
+.title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+}
+
+button {
+    all: unset;
+    margin: 20px;
+    padding: 8px 15px;
+    background-color: lightblue;
+    color: rgb(66, 65, 65);
+    border-radius: 3px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(170, 210, 223);
+}
+
+.turn {
+    margin: 20px;
+    font-size: large;
+    font-weight: bold;
+}
